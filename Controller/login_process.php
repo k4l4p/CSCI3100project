@@ -15,7 +15,7 @@ if(!$row){
     header("Location: Login.php");
 
 }else{
-    header("Location: ../UI/matchmaking.html");
+    header("Location: ../UI/matchmaking.php");
 }
 
 ?>
