@@ -1,3 +1,26 @@
+<?php
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+
+include("Controller/sql.php");
+$mysqli = GETSQLLink();
+$userID = $_SESSION["id"];
+if (isset($_POST["submit"])){
+  //$query = "select * from preferences where userID = '$userID'";
+  //$res = $mysqli->query($query);
+  //if(!$res){
+  
+  //}
+    echo "aaa";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head> 
@@ -22,7 +45,7 @@
 						</div>
 				 </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
+					<form class="form-horizontal" method="post" action="preference.php">
                         <div class="form-group">
                             <label for="image">Choose your image: </label>
                             <input type="file" class="form-control-file" id="image" accept="image/*">
@@ -77,7 +100,7 @@
                           </div> 
 
 						<div class="form-group ">
-							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+							<button type="submit" name="submit" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
 						</div>
 					</form>
 				</div>
