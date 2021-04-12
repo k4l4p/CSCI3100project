@@ -69,7 +69,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               <a class="nav-link" href="#">Chatroom</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Controller/logout.php">Logout</a>
+              <a class="nav-link" href="./Controller/logout.php">Logout</a>
             </li>
           </ul> 
        </div>

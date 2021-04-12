@@ -11,12 +11,21 @@ include("Controller/sql.php");
 $mysqli = GETSQLLink();
 $userID = $_SESSION["id"];
 if (isset($_POST["submit"])){
-  //$query = "select * from preferences where userID = '$userID'";
-  //$res = $mysqli->query($query);
-  //if(!$res){
-  
-  //}
+  $path = "uploadimages/". basename($_FILES["image"]["name"]);
+  move_uploaded_file($_FILES["image"]["tmp_name"], $path);
+  $p1 = $_POST["p1"];$p2 = $_POST["p2"];$p3 = $_POST["p3"];$p4 = $_POST["p4"];
+  $des = $_POST["des"];
+  $query = "select * from preferences where userID = '$userID'";
+  $res = $mysqli->query($query); 
+  if (mysqli_num_rows($res) == 0){//if no exist preference
     echo "aaa";
+    $insert = "insert into preferences (userID, pref1, pref2, pref3, pref4, image, description) values($userID, '$p1','$p2', '$p3', '$p4', '$path', '$des')";
+    echo $insert;
+    $res = $mysqli->query($insert); 
+  } else {
+    $update = "update preferences set pref1 = '$p1', pref2 = '$p2', pref3 = '$p3', pref4 = '$p4', image = '$path', description = '$des' where userID = '$userID'";
+    $res = $mysqli->query($update); 
+  }
 }
 ?>
 
@@ -45,10 +54,10 @@ if (isset($_POST["submit"])){
 						</div>
 				 </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="preference.php">
+					<form class="form-horizontal" method="post" action="preference.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="image">Choose your image: </label>
-                            <input type="file" class="form-control-file" id="image" accept="image/*">
+                            <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
                           </div>
 						<div class="form-group">
 							<label for="des" class="cols-sm-2 control-label">Tell us about yourself:</label>
@@ -64,7 +73,7 @@ if (isset($_POST["submit"])){
 
                         <div class="form-group">
                             <label for="p1">Preference 1:</label>
-                            <select class="form-control" id="p1">
+                            <select class="form-control" name="p1" id="p1">
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
@@ -73,7 +82,7 @@ if (isset($_POST["submit"])){
                           </div> 
 						<div class="form-group">
                             <label for="p2">Preference 2:</label>
-                            <select class="form-control" id="p2">
+                            <select class="form-control" name="p2" id="p2">
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
@@ -82,7 +91,7 @@ if (isset($_POST["submit"])){
                           </div> 
                           <div class="form-group">
                             <label for="p3">Preference 3:</label>
-                            <select class="form-control" id="p3">
+                            <select class="form-control" name="p3" id="p3">
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
@@ -91,7 +100,7 @@ if (isset($_POST["submit"])){
                           </div> 
                           <div class="form-group">
                             <label for="p4">Preference 4:</label>
-                            <select class="form-control" id="p4">
+                            <select class="form-control" name="p4" id="p4">
                               <option>1</option>
                               <option>2</option>
                               <option>3</option>
