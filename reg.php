@@ -22,7 +22,7 @@
 						</div>
 				 </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="../Controller/register.php">
+					<form class="form-horizontal" method="post" action="./Controller/register.php">
 						<div class="form-group">
 							<label for="email" class="cols-sm-2 control-label">Your Email</label>
 							<div class="cols-sm-10">
@@ -57,7 +57,7 @@
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 						</div>
 						<div class="login-register">
-				            <a href="login.html">Login</a>
+				            <a href="./login.php">Login</a>
 				         </div>
 					</form>
 				</div>

@@ -23,5 +23,5 @@ $insert = "insert into user (userID, username, password, email)
 $mysqli->query($insert);
 $mysqli->close();
 echo "<div class='msg'> User Registration Complete</div>";
-
+header("location: ../matchmaking.php");
 ?>

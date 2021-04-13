@@ -6,6 +6,21 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
+include("Controller/sql.php");
+$mysqli = GETSQLLink();
+$userID = $_SESSION["id"];
+$query = "select * from preferences where userID = '$userID'";
+$res = $mysqli->query($query);
+if(mysqli_num_rows($res) <= 0){
+$no_result = 1;
+} else{
+    $row = $res->fetch_object();
+    $p1 = $row->pref1;
+    $p2 = $row->pref2;
+    $p3 = $row->pref3;
+    $p4 = $row->pref4;
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,16 +72,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 				
 <section class="container">
     <div class="col-md-12" style="position:relative;">
-       <div class="col-md-8" style="position:absolute;bottom:0;">
+       <div class="col-md-7" style="position:absolute;bottom:0;">
         <h1>Sakura</h1>
        </div>
-       <div class="col-md-4" style="position:absolute;bottom:0; right: 0;">
+       <div class="col-md-5" style="position:absolute;bottom:0; right: 0;">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Matching</a>
+              <a class="nav-link active" href="./matchmaking.php">Matching</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Chatroom</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./preference.php">Preferences form</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./Controller/logout.php">Logout</a>
@@ -75,6 +93,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
        </div>
     </div>
     <hr>
+    <?php
+        if(isset($no_result) && $no_result == 1){
+            echo 'Fill in the preference form first!';
+        } else {
+            $query = "select * from preferences where pref1 = '$p1' or pref2 = '$p2' or pref3 = '$p3' or pref4='$p4'";
+            $res = $mysqli->query($query);
+            while ($row = $res->fetch_object()){
+                echo $row->des."<br>";
+            }
+        }
+
+    ?>
     <div class="row active-with-click">
         <div class="col-md-4 col-sm-6 col-xs-12">
             <article class="material-card Blue-Grey">
@@ -103,60 +133,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 </div>
             </article>
         </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <article class="material-card Blue-Grey">
-                <h2>
-                    <span>Tim Chan</span>
-                    <strong>
-                        <i class="fa fa-fw fa-magic"></i>
-                        Common Preferences: xxx, ooo
-                    </strong>
-                </h2>
-                <div class="mc-content">
-                    <div class="img-container">
-                        <img class="img-responsive" src="https://wpdmcdn.s3.amazonaws.com/me.jpg">
-                    </div>
-                    <div class="mc-description">
-                        I am Tim. My favourite habit is .....
-                    </div>
-                </div>
-                <a class="mc-btn-action">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <div class="mc-footer">
-                    <a href="#" class="fa fa-fw fa-thumbs-up"></a>
-                    <a href="#"  class="fa fa-fw fa-thumbs-down"></a>
-
-                </div>
-            </article>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <article class="material-card Blue-Grey">
-                <h2>
-                    <span>Tim Chan</span>
-                    <strong>
-                        <i class="fa fa-fw fa-magic"></i>
-                        Common Preferences: xxx, ooo
-                    </strong>
-                </h2>
-                <div class="mc-content">
-                    <div class="img-container">
-                        <img class="img-responsive" src="https://wpdmcdn.s3.amazonaws.com/me.jpg">
-                    </div>
-                    <div class="mc-description">
-                        I am Tim. My favourite habit is .....
-                    </div>
-                </div>
-                <a class="mc-btn-action">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <div class="mc-footer">
-                    <a href="#" class="fa fa-fw fa-thumbs-up"></a>
-                    <a href="#"  class="fa fa-fw fa-thumbs-down"></a>
-
-                </div>
-            </article>
-        </div>
+        
         
     </div>
 </section>

@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
 
-                            <a href="reg.html" class="Register" value="Login">Register</a>
+                            <a href="reg.php" class="Register" value="Login">Register</a>
                         </div>
                     </form>
                 </div>  

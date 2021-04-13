@@ -18,9 +18,7 @@ if (isset($_POST["submit"])){
   $query = "select * from preferences where userID = '$userID'";
   $res = $mysqli->query($query); 
   if (mysqli_num_rows($res) == 0){//if no exist preference
-    echo "aaa";
     $insert = "insert into preferences (userID, pref1, pref2, pref3, pref4, image, description) values($userID, '$p1','$p2', '$p3', '$p4', '$path', '$des')";
-    echo $insert;
     $res = $mysqli->query($insert); 
   } else {
     $update = "update preferences set pref1 = '$p1', pref2 = '$p2', pref3 = '$p3', pref4 = '$p4', image = '$path', description = '$des' where userID = '$userID'";
@@ -47,11 +45,32 @@ if (isset($_POST["submit"])){
 	<body>
 		<div class="container">
 			<div class="row main">
-				<div class="panel-heading">
-					<div class="panel-title text-center">
-							<h1 class="title">Let us know about you!</h1>
+      <div class="col-md-12" style="position:relative;">
+       <div class="col-md-7" style="position:absolute;bottom:0;">
+        <h1>Sakura</h1>
+       </div>
+       <div class="col-md-5" style="position:absolute;bottom:0; right: 0;">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="./matchmaking.php">Matching</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Chatroom</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./preference.php">Preferences form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Controller/logout.php">Logout</a>
+            </li>
+          </ul> 
+       </div>
+      </div>
+				<div class="panel-heading text-center">
+					
+							<h3 class="title">Let us know about you!</h1>
 							<hr />
-						</div>
+					
 				 </div> 
 				<div class="main-login main-center">
 					<form class="form-horizontal" method="post" action="preference.php" enctype="multipart/form-data">
@@ -72,39 +91,39 @@ if (isset($_POST["submit"])){
 						</div>
 
                         <div class="form-group">
-                            <label for="p1">Preference 1:</label>
+                            <label for="p1">Favourite Food:</label>
                             <select class="form-control" name="p1" id="p1">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
+                              <option value="1">Western Food</option>
+                              <option value="2">Chinese Food</option>
+                              <option value="3">Thai Food</option>
+                              <option value="4">Japanese Food</option>
                             </select>
                           </div> 
 						<div class="form-group">
-                            <label for="p2">Preference 2:</label>
+                            <label for="p2">Favourite Country:</label>
                             <select class="form-control" name="p2" id="p2">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
+                            <option value="1">USA</option>
+                              <option value="2">Taiwan</option>
+                              <option value="3">UK</option>
+                              <option value="4">Japan</option>
                             </select>
                           </div> 
                           <div class="form-group">
-                            <label for="p3">Preference 3:</label>
+                            <label for="p3">Favourite Singer:</label>
                             <select class="form-control" name="p3" id="p3">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
+                            <option value="1">Michael Jackson</option>
+                              <option value="2">Taylor Swift</option>
+                              <option value="3">Bruno Mars</option>
+                              <option value="4">The weeknd</option>
                             </select>
                           </div> 
                           <div class="form-group">
                             <label for="p4">Preference 4:</label>
                             <select class="form-control" name="p4" id="p4">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
+                            <option value="1">Stephen King</option>
+                              <option value="2">Ursula K. Le Guin</option>
+                              <option value="3">Samuel R. Delany </option>
+                              <option value="4">Flannery O’Connor</option>
                             </select>
                           </div> 
 
