@@ -9,7 +9,7 @@
 4. Goto http://localhost/
 
 ## Chatroom function
-THe chatroom is referenced by https://www.phpzag.com/build-live-chat-system-with-ajax-php-mysql/
+The chatroom is referenced by https://www.phpzag.com/build-live-chat-system-with-ajax-php-mysql/
 
 ## Milestone
 
@@ -24,5 +24,5 @@ THe chatroom is referenced by https://www.phpzag.com/build-live-chat-system-with
 - [x] Login
 - [x] Registration
 - [ ] Matching
-- [ ] Chatroom
+- [x] Chatroom
 - [x] Preference form

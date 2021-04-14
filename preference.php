@@ -57,7 +57,7 @@ if (isset($_POST["submit"])){
               <a class="nav-link active" href="./matchmaking.php">Matching</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Chatroom</a>
+              <a class="nav-link" href="./chatroom.php">Chatroom</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./preference.php">Preferences form</a>

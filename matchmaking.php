@@ -36,7 +36,7 @@ $no_result = 1;
 
 <link href="css/reg.css" rel="stylesheet">
 <link href="css/matchmaking.css" rel="stylesheet">
-		<title>Preferences form</title>
+		<title>Matching!</title>
         <script>
             $(function() {
         $('.material-card > .mc-btn-action').click(function () {
@@ -81,7 +81,7 @@ $no_result = 1;
               <a class="nav-link active" href="./matchmaking.php">Matching</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Chatroom</a>
+              <a class="nav-link" href="./chatroom.php">Chatroom</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./preference.php">Preferences form</a>
