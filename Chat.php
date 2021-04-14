@@ -2,7 +2,7 @@
 class Chat{
     private $host  = 'localhost';
     private $user  = 'root';
-    private $password   = "123456";
+    private $password   = "";
     private $database  = "sakura";      
     private $chatTable = 'chat';
 	private $chatUsersTable = 'user';
@@ -21,7 +21,7 @@ class Chat{
 	private function getData($sqlQuery) {
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		if(!$result){
-			die('Error in query: '. mysqli_error());
+			die('Error in query: ' .mysqli_error($this->dbConnect));
 		}
 		$data= array();
 		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -107,10 +107,10 @@ class Chat{
 			$user_name = '';
 			if($chat["sender_userid"] == $from_user_id) {
 				$conversation .= '<li class="sent">';
-				$conversation .= '<img width="22px" height="22px" src="userpics/'.$fromUserAvatar.'" alt="" />';
+				$conversation .= '<img width="22px" height="22px" src="./'.$fromUserAvatar.'" alt="" />';
 			} else {
 				$conversation .= '<li class="replies">';
-				$conversation .= '<img width="22px" height="22px" src="userpics/'.$toUserAvatar.'" alt="" />';
+				$conversation .= '<img width="22px" height="22px" src="./'.$toUserAvatar.'" alt="" />';
 			}			
 			$conversation .= '<p>'.$chat["message"].'</p>';			
 			$conversation .= '</li>';
@@ -123,7 +123,7 @@ class Chat{
 		$toUserAvatar = '';
 		foreach ($userDetails as $user) {
 			$toUserAvatar = $user['avatar'];
-			$userSection = '<img src="userpics/'.$user['avatar'].'" alt="" />
+			$userSection = '<img src="./'.$user['avatar'].'" alt="" />
 				<p>'.$user['username'].'</p>
 				<div class="social-media">
 					<i class="fa fa-facebook" aria-hidden="true"></i>
