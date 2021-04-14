@@ -15,7 +15,7 @@
 - [x] Login
 - [x] Registration
 - [x] Matching card
-- [ ] Chatroom
+- [x] Chatroom
 - [x] Preference form
 
 ### Backend
