@@ -18,8 +18,8 @@ if($res->num_rows > 0){
     $id = 0 ;
 }
 
-$insert = "insert into user (userID, username, password, email)
-        values($id, '$username','$password', '$email')";
+$insert = "insert into user (userID, username, password, email, avatar)
+        values($id, '$username','$password', '$email', 'uploadimages/default.png')";
 $mysqli->query($insert);
 $mysqli->close();
 echo "<div class='msg'> User Registration Complete</div>";
