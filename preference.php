@@ -24,6 +24,8 @@ if (isset($_POST["submit"])){
     $update = "update preferences set pref1 = '$p1', pref2 = '$p2', pref3 = '$p3', pref4 = '$p4', image = '$path', description = '$des' where userID = '$userID'";
     $res = $mysqli->query($update); 
   }
+  $update = "update user set avatar = '$path' where userID = '$userID'";
+  $res = $mysqli->query($update); 
 }
 ?>
 

@@ -93,6 +93,7 @@ $no_result = 1;
        </div>
     </div>
     <hr>
+    <div class="row active-with-click">
     <?php
         if(isset($no_result) && $no_result == 1){
             echo 'Fill in the preference form first!';
@@ -100,20 +101,44 @@ $no_result = 1;
             $query = "select * from preferences where pref1 = '$p1' or pref2 = '$p2' or pref3 = '$p3' or pref4='$p4'";
             $res = $mysqli->query($query);
             while ($row = $res->fetch_object()){
-                echo $row->des."<br>";
+                echo '
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <article class="material-card Blue-Grey">
+                        <h2>
+                            <span>';
+                echo $row->userID;
+                echo '</h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img class="img-responsive" src="';
+                echo $row->image;
+                echo '">
+                    </div>
+                    <div class="mc-description">';
+                
+                echo $row->description;
+                echo '</div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <a href="#" class="fa fa-fw fa-thumbs-up"></a>
+                    <a href="#"  class="fa fa-fw fa-thumbs-down"></a>
+
+                </div>
+            </article>
+        </div>';
             }
         }
 
     ?>
+    </div>
     <div class="row active-with-click">
         <div class="col-md-4 col-sm-6 col-xs-12">
             <article class="material-card Blue-Grey">
                 <h2>
                     <span>Tim Chan</span>
-                    <strong>
-                        <i class="fa fa-fw fa-magic"></i>
-                        Common Preferences: xxx, ooo
-                    </strong>
                 </h2>
                 <div class="mc-content">
                     <div class="img-container">
