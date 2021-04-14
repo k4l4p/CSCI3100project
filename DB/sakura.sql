@@ -82,7 +82,7 @@ CREATE TABLE `preferences` (
 
 INSERT INTO `preferences` (`userID`, `pref1`, `pref2`, `pref3`, `pref4`, `image`, `description`) VALUES
 (1, 3, 2, 1, 4, 'uploadimages/00000000.jpg', 'hahahaha\r\n                                    '),
-(2, 3, 3, 1, 4, 'uploadimages/00000000.jpg', 'Hi I am tom\r\n                                    ');
+(2, 3, 3, 1, 4, 'uploadimages/00000001.jpg', 'Hi I am tom\r\n                                    ');
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `username`, `password`, `email`, `online`, `current_session`, `avatar`) VALUES
 (1, 'sakura', 'sakura', 'sakura@email.com', 1, 2, 'uploadimages/00000000.jpg'),
-(2, 'tom', '123456', 'tom@email.com', 0, 0, 'uploadimages/00000000.jpg'),
-(3, 'mary', '123456', 'mary@email.com', 0, 0, 'uploadimages/00000000.jpg');
+(2, 'tom', '123456', 'tom@email.com', 0, 0, 'uploadimages/00000001.jpg'),
+(3, 'mary', '123456', 'mary@email.com', 0, 0, 'uploadimages/00000002.jpg');
 
 --
 -- Indexes for dumped tables
