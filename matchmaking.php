@@ -98,6 +98,7 @@ $no_result = 1;
         if(isset($no_result) && $no_result == 1){
             echo 'Fill in the preference form first!';
         } else {
+            //Unfinished here
             $query = "select * from preferences where pref1 = '$p1' or pref2 = '$p2' or pref3 = '$p3' or pref4='$p4'";
             $res = $mysqli->query($query);
             while ($row = $res->fetch_object()){
