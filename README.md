@@ -8,6 +8,8 @@
 3. Import .sql file in DB/ to the machine SQL server
 4. Goto http://localhost/
 
+## Chatroom function
+THe chatroom is referenced by https://www.phpzag.com/build-live-chat-system-with-ajax-php-mysql/
 
 ## Milestone
 
