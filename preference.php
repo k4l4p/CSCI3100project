@@ -120,7 +120,7 @@ if (isset($_POST["submit"])){
                             </select>
                           </div> 
                           <div class="form-group">
-                            <label for="p4">Preference 4:</label>
+                            <label for="p4">Favourite Writer:</label>
                             <select class="form-control" name="p4" id="p4">
                             <option value="1">Stephen King</option>
                               <option value="2">Ursula K. Le Guin</option>
