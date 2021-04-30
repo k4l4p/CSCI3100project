@@ -68,6 +68,9 @@ $mysqli = GETSQLLink();
 				<div id="sidepanel">
 					<div id="profile">
 					<?php
+					//
+					//
+					//	Get corrent user chatinf list and their online status
 					include ('Chat.php');
 					$chat = new Chat();
 					$loggedUser = $chat->getUserDetails($_SESSION["id"]);

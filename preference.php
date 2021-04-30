@@ -11,6 +11,7 @@ include("Controller/sql.php");
 $mysqli = GETSQLLink();
 $userID = $_SESSION["id"];
 if (isset($_POST["submit"])){
+  //image upload handler
   $path = "uploadimages/". basename($_FILES["image"]["name"]);
   move_uploaded_file($_FILES["image"]["tmp_name"], $path);
   $p1 = $_POST["p1"];$p2 = $_POST["p2"];$p3 = $_POST["p3"];$p4 = $_POST["p4"];
@@ -21,6 +22,7 @@ if (isset($_POST["submit"])){
     $insert = "insert into preferences (userID, pref1, pref2, pref3, pref4, image, description) values($userID, '$p1','$p2', '$p3', '$p4', '$path', '$des')";
     $res = $mysqli->query($insert); 
   } else {
+    //update preferences
     $update = "update preferences set pref1 = '$p1', pref2 = '$p2', pref3 = '$p3', pref4 = '$p4', image = '$path', description = '$des' where userID = '$userID'";
     $res = $mysqli->query($update); 
   }

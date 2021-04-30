@@ -10,11 +10,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 include("Controller/sql.php");
 $mysqli = GETSQLLink();
 $userID = $_SESSION["id"];
+//Fetch userlist where the users have similar references to current user
 $query = "select * from preferences where userID != ".$userID;
 $res = $mysqli->query($query);
 if(mysqli_num_rows($res) <= 0){
 $no_result = 1;
 } else{
+    // Get current user preferences
     $row = $res->fetch_object();
     $p1 = $row->pref1;
     $p2 = $row->pref2;
@@ -98,7 +100,7 @@ $no_result = 1;
         if(isset($no_result) && $no_result == 1){
             echo 'Fill in the preference form first!';
         } else {
-            //Unfinished here
+            //Get the user lists
             $query = "select * from preferences where( pref1 = '$p1' or pref2 = '$p2' or pref3 = '$p3' or pref4='$p4' )and userID !=".$userID;
             $res = $mysqli->query($query);
             while ($row = $res->fetch_object()){

@@ -1,12 +1,15 @@
 $(document).ready(function(){
 	setInterval(function(){
+		//	Update user online list and message in a longer period of time
 		updateUserList();	
 		updateUnreadMessageCount();	
 	}, 60000);	
 	setInterval(function(){
+		//	Update new message in shorter period of time
 		showTypingStatus();
 		updateUserChat();			
 	}, 5000);
+	//	Below are animation settings
 	$(".messages").animate({ 
 		scrollTop: $(document).height() 
 	}, "fast");
@@ -71,6 +74,8 @@ $(document).ready(function(){
 		});
 	}); 		
 }); 
+//	Ajax code to work with chat_action.php
+//	Each action parameter are defined for specific action function in chat_action.php
 function updateUserList() {
 	$.ajax({
 		url:"chat_action.php",
@@ -92,6 +97,7 @@ function updateUserList() {
 		}
 	});
 }
+//same as insert_chat in chat_action.php
 function sendMessage(to_user_id) {
 	message = $(".message-input input").val();
 	$('.message-input input').val('');
