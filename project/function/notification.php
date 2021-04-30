@@ -72,6 +72,7 @@ $userID = $_SESSION["id"];
 
     <?php
     $mysqli = GETSQLLink();
+    //select the information of other users who liked the user
     $query = "SELECT DISTINCT senderID, username, time FROM user join matching on user.userID = matching.senderID or user.userID = matching.receiverID where receiverID =".$userID. " and userID !=".$userID." and matchSuccess = 'N' order BY time desc";
     $res = $mysqli->query($query);
     while ($row = $res->fetch_object()){
