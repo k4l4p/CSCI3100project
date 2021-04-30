@@ -7,7 +7,7 @@
 
 <?php
 session_start();
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ 
     header("location: login.php");
     exit;
 }
@@ -84,7 +84,9 @@ $userID = $_SESSION["id"];
 
 
         <?php
-            $mysqli = GETSQLLink();
+            $mysqli = GETSQLLink(); //select all of the user information which satisfy the following codition
+            //1. not include himself/herself
+            //2. not include other users that passed or liked or matched by the user
             $query = "SELECT * from user where userID not in (SELECT DISTINCT userID FROM user join matching on user.userID = matching.senderID or user.userID = matching.receiverID WHERE senderID = '$userID' or receiverID = '$userID' or matchSuccess = 'Y')  ";
             $res = $mysqli->query($query);
 
